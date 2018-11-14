@@ -1,9 +1,12 @@
 const PRECACHE = 'precahce-v1'
 const RUNTIME = 'runtime'
+// const IDB = window.indexedDB.open("service1");
 
 const PRECACHE_URLS = [
-
-]
+  "/images/img-1.jpg",
+  "/images/img-2.jpg",
+  "/images/img-3.jpg"
+];
 
 self.addEventListener('install', event => {
     event.waitUntil(caches
