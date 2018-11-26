@@ -5,7 +5,8 @@ const RUNTIME = 'runtime'
 const PRECACHE_URLS = [
   "/images/img-1.jpg",
   "/images/img-2.jpg",
-  "/images/img-3.jpg"
+  "/images/img-3.jpg",
+  "/"
 ];
 
 self.addEventListener('install', event => {
@@ -31,6 +32,7 @@ self.addEventListener('activate', event => {
 })
 
 self.addEventListener('fetch', event =>{
+    console.log(event.request.url);
     if (event.request.url.startsWith(self.location.origin)){
         event.responseWith(
             caches.match(event.request).then(cachedResponse => {
@@ -46,3 +48,13 @@ self.addEventListener('fetch', event =>{
         )
     }
 })
+
+// self.addEventListener('sync', event => {
+//     if(event.tag == 'sync-event'){
+//         event.waitUntil(
+//             myCustomFunction().catch(err => {
+//                 console.log('error occured')
+//             })
+//         )
+//     }
+// })
